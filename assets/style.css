@@ -122,6 +122,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   }
   .nav.full ul.open { display: flex; }
   .nav.full li.extra { display: block; }
+  .nav.full li.desk-only { display: none; }
   .nav.full ul a { padding: 0.8rem 0; font-size: 1.05rem; border-bottom: 1px solid var(--line); }
   .nav.full ul li:last-child a { border-bottom: 0; }
 
@@ -346,3 +347,15 @@ address { font-style: normal; font-family: var(--serif); font-size: var(--step-1
 .sources li { padding: 0.4rem 0; overflow-wrap: anywhere; }
 .sources li:target { background: var(--surface); outline: 1px solid var(--line); }
 .site-foot ul { flex-wrap: wrap; }
+
+/* Themen-Navigation auf den Wissensseiten */
+.topic-nav { margin-top: 2rem; }
+.topic-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.topic-nav a {
+  display: inline-block; padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: 999px;
+  color: var(--ink); text-decoration: none; font-size: 0.95rem; background: var(--surface);
+}
+.topic-nav a:hover { border-color: var(--clay); }
+.topic-nav a[aria-current="page"] { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.treatments .more { margin-top: 0.6rem; }
+.treatments .more a { font-size: 0.95rem; }
