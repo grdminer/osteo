@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,12 +34,20 @@
       <span>Osteopathie &amp; Physiotherapie</span></span>
     </a>
     <nav class="nav" aria-label="Hauptnavigation">
-      <ul>
-        <li class="secondary"><a href="#ansatz">Ansatz</a></li>
-        <li class="secondary"><a href="#behandlung">Behandlung</a></li>
-        <li class="secondary"><a href="#therapeut">Therapeut</a></li>
+      <a class="call call-mobile" href="https://my.lemniscus.de/ot/24f0e28b-988a-4317-8907-98d3f3a59a79" rel="noopener">Termin buchen</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menü
+      </button>
+      <ul id="menu">
+        <li><a href="#ansatz">Ansatz</a></li>
+        <li><a href="#behandlung">Behandlung</a></li>
+        <li class="extra"><a href="#ablauf">Erster Termin</a></li>
+        <li class="extra"><a href="#kosten">Kosten</a></li>
+        <li><a href="#therapeut">Therapeut</a></li>
+        <li class="extra"><a href="#praxis">Praxis</a></li>
+        <li class="extra"><a href="#downloads">Unterlagen</a></li>
         <li><a href="#anfahrt">Anfahrt</a></li>
-        <li><a class="call" href="https://my.lemniscus.de/ot/24f0e28b-988a-4317-8907-98d3f3a59a79" rel="noopener">Termin buchen</a></li>
+        <li class="call-desktop"><a class="call" href="https://my.lemniscus.de/ot/24f0e28b-988a-4317-8907-98d3f3a59a79" rel="noopener">Termin buchen</a></li>
       </ul>
     </nav>
   </div>
@@ -181,6 +189,7 @@
       <figure class="photo" style="margin:0"><img src="assets/img/behandlung.jpg" alt="Heller Behandlungsraum mit Behandlungsliege" loading="lazy"></figure>
       <figure class="photo" style="margin:0"><img src="assets/img/wartebereich.jpg" alt="Wartebereich mit zwei roten Sesseln" loading="lazy"></figure>
       <figure class="photo" style="margin:0"><img src="assets/img/praxis-1.jpg" alt="Buddha-Figur in der Praxis" loading="lazy" style="object-position:50% 30%"></figure>
+      <figure class="photo" style="margin:0"><img src="assets/img/praxis-3.jpg" alt="Kleine Froschfigur im Meditationssitz" loading="lazy"></figure>
       <figure class="photo" style="margin:0"><img src="assets/img/aussen.jpg" alt="Außenansicht der Praxis in der Bahnhofstraße" loading="lazy" style="object-position:50% 40%"></figure>
     </div>
   </div>
@@ -255,5 +264,21 @@
     </ul>
   </div>
 </footer>
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.remove("no-js");
+  var btn = document.querySelector(".menu-toggle");
+  var menu = document.getElementById("menu");
+  if (!btn || !menu) return;
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    menu.classList.toggle("open", open);
+  }
+  btn.addEventListener("click", function () { setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+  menu.addEventListener("click", function (e) { if (e.target.closest("a")) setOpen(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { setOpen(false); btn.focus(); } });
+})();
+</script>
 </body>
 </html>

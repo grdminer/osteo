@@ -104,9 +104,34 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 }
 .nav .call:hover { background: var(--clay-deep); color: var(--surface); text-decoration: none; }
 
+.menu-toggle, .call-mobile { display: none; }
+.nav li.extra { display: none; }
+.nav { position: static; }
+
 @media (max-width: 52rem) {
-  .nav ul { gap: 0.25rem 1rem; }
-  .nav li.secondary { display: none; }
+  .site-head { position: relative; }
+  .site-head .wrap { flex-wrap: nowrap; }
+  .brand strong + span { display: none; }
+  .nav { display: flex; align-items: center; gap: 0.5rem; }
+  .call-mobile { display: inline-block; font-size: 0.9rem; }
+  .menu-toggle {
+    display: inline-flex; align-items: center; gap: 0.4rem; font: inherit; font-size: 0.95rem; color: var(--ink);
+    background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.8rem; cursor: pointer;
+  }
+  .menu-toggle svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+  .menu-toggle[aria-expanded="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+  .nav ul {
+    display: none; position: absolute; left: 0; right: 0; top: 100%; z-index: 20;
+    flex-direction: column; gap: 0; padding: 0.5rem var(--gutter) 1rem;
+    background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: 0 12px 24px -16px rgba(44,36,31,.35);
+  }
+  .nav ul.open, .no-js .nav ul { display: flex; }
+  .no-js .nav ul { position: static; box-shadow: none; }
+  .no-js .menu-toggle { display: none; }
+  .nav li.extra { display: block; }
+  .nav li.call-desktop { display: none; }
+  .nav ul a { display: block; padding: 0.8rem 0; font-size: 1.05rem; border-bottom: 1px solid var(--line); }
+  .nav ul li:nth-last-child(2) a { border-bottom: 0; }
 }
 
 /* ---------- Hero ---------- */
@@ -226,11 +251,9 @@ section.contact-block, .mountain-band + section { border-top: 0; }
 
 .gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 14rem 14rem; gap: 0.75rem; margin-top: 2.5rem; }
 .gallery .photo:first-child { grid-row: span 2; }
-.gallery .photo:nth-child(4) { grid-column: span 2; }
 @media (max-width: 40rem) {
   .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: auto; grid-auto-rows: 10rem; }
   .gallery .photo:first-child { grid-column: span 2; grid-row: auto; min-height: 14rem; }
-  .gallery .photo:nth-child(4) { grid-column: span 2; }
 }
 
 /* Offene Punkte für die Vorschau – vor Livegang entfernen */
@@ -289,3 +312,24 @@ address { font-style: normal; font-family: var(--serif); font-size: var(--step-1
 .legal h2 { font-size: var(--step-1); font-family: var(--serif); font-weight: 500; margin: 2.25rem 0 0.5rem; }
 .legal p, .legal ul { max-width: var(--measure); }
 .legal ul { padding-left: 1.2rem; }
+
+/* Rechtsseiten: kurze Navigation ohne Menü-Knopf */
+@media (max-width: 52rem) {
+  .nav.simple ul { display: flex; position: static; flex-direction: row; gap: 1rem; padding: 0; background: none; border: 0; box-shadow: none; align-items: center; }
+  .nav.simple ul a { border: 0; padding: 0.4rem 0; font-size: 0.95rem; }
+  .nav.simple ul a.call { padding: 0.45rem 0.9rem; }
+}
+@media (max-width: 52rem) {
+  .call-mobile, .nav .call { white-space: nowrap; }
+  .nav.simple ul { flex-wrap: nowrap; }
+  .nav.simple li:first-child { display: none; }
+}
+@media (max-width: 22rem) { .menu-toggle { padding: 0.4rem 0.6rem; } .brand strong { font-size: 1.1rem; } }
+@media (max-width: 52rem) {
+  .site-head .wrap { gap: 0.5rem; }
+  .brand { gap: 0.55rem; min-width: 0; }
+  .seal { width: 2.2rem; height: 2.2rem; font-size: 0.9rem; }
+  .nav { gap: 0.4rem; flex: none; }
+  .call-mobile { padding: 0.45rem 0.75rem; }
+  .menu-toggle { padding: 0.4rem 0.65rem; }
+}
