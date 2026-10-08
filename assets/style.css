@@ -150,7 +150,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 /* Ensō – das eine bewegte Element der Seite */
 .enso {
-  position: absolute; right: clamp(-3rem, 2vw, 4rem); top: 52%; transform: translateY(-50%);
+  position: absolute; right: clamp(-3rem, 2vw, 4rem); top: calc(50% + 6vw); transform: translateY(-50%);
   width: min(31rem, 46vw); height: auto; z-index: 0; pointer-events: none;
 }
 .enso .ink { fill: var(--ink); opacity: 0.86; }
@@ -168,7 +168,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 /* Blütenzweig (Asiatischer Blüten-Hartriegel) – wird nach dem Ensō gemalt */
 .blossoms {
-  position: absolute; top: 0; right: 0; width: min(38rem, 50vw); height: auto;
+  position: absolute; top: 0; left: 0; width: 100%; height: auto;
   z-index: 0; pointer-events: none; overflow: visible;
 }
 .blossoms .branch { fill: var(--ink); opacity: 0.88; }
@@ -179,8 +179,10 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .blossoms .core { fill: #87843f; }
 .blossoms .leaf, .blossoms .bract { transform-box: fill-box; transform-origin: 50% 100%; }
 .blossoms .core { transform-box: fill-box; transform-origin: 50% 50%; }
+/* Platz über der Überschrift für den Zweig (Höhe der Zeichnung = 14,2 % der Breite) */
+.hero { padding-top: calc(14.2vw + 1.5rem); }
 @media (prefers-reduced-motion: no-preference) {
-  .blossoms .reveal { stroke-dasharray: 900; stroke-dashoffset: 900; animation: brush 2s cubic-bezier(.5,.1,.35,1) forwards; }
+  .blossoms .reveal { animation: brush 8s linear forwards; }
   .blossoms .leaf { opacity: 0; transform: scale(.2); animation: unfold .9s ease-out forwards; }
   .blossoms .bract { opacity: 0; transform: scale(.15) rotate(-6deg); animation: open 1.1s cubic-bezier(.3,.6,.3,1) forwards; }
   .blossoms .vein { opacity: 0; animation: vein .6s ease-out forwards; }
@@ -190,9 +192,6 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 @keyframes open { 60% { opacity: 1; } to { opacity: 1; transform: none; } }
 @keyframes vein { to { opacity: 0.35; } }
 @keyframes unfold-core { to { opacity: 1; transform: scale(1); } }
-@media (max-width: 52rem) {
-  .blossoms { width: 14rem; right: -2.5rem; top: -1.5rem; opacity: 0.5; }
-}
 
 /* Symbole (selbst gezeichnet) */
 .icon { width: 2.75rem; height: 2.75rem; fill: none; stroke: var(--clay); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
@@ -330,3 +329,6 @@ address { font-style: normal; font-family: var(--serif); font-size: var(--step-1
 .legal h2 { font-size: var(--step-1); font-family: var(--serif); font-weight: 500; margin: 2.25rem 0 0.5rem; }
 .legal p, .legal ul { max-width: var(--measure); }
 .legal ul { padding-left: 1.2rem; }
+@media (prefers-reduced-motion: reduce) {
+  .blossoms .reveal { stroke-dashoffset: 0 !important; }
+}
