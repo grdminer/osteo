@@ -22,14 +22,16 @@
 }
 
 :root {
-  --paper: #edf0ea;      /* Flechtengrau – Grundfläche */
-  --surface: #f7f8f4;    /* helle Flächen */
-  --ink: #1e2b27;        /* Kieferngrün-Schwarz – Text */
-  --muted: #53615b;      /* Nebentext */
-  --moss: #4a6a51;       /* Akzent */
-  --moss-deep: #36513d;
-  --sand: #d9ccb3;       /* warmer Gegenton */
-  --line: #c6cfc3;
+  --paper: #ebe3d5;      /* ungebleichtes Reispapier – Grundfläche */
+  --surface: #f5f0e6;    /* helle Flächen */
+  --ink: #2c241f;        /* Umbra-Schwarz – Text */
+  --muted: #6a5d51;      /* Nebentext */
+  --clay: #87552f;       /* gebrannte Erde – Akzent */
+  --clay-deep: #66401f;
+  --olive: #6d6b3f;      /* Olivgrün – zweiter Akzent */
+  --sand: #cdb896;       /* Lehm */
+  --cinnabar: #9a3b27;   /* Siegelrot, nur für das Siegel */
+  --line: #d4c6b0;
 
   --serif: "Literata", Georgia, "Times New Roman", serif;
   --sans: "Karla", "Helvetica Neue", Arial, sans-serif;
@@ -61,10 +63,10 @@ body {
 
 img { max-width: 100%; display: block; }
 
-a { color: var(--moss-deep); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a { color: var(--clay-deep); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 a:hover { color: var(--ink); }
 
-:focus-visible { outline: 3px solid var(--moss); outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; border-radius: 2px; }
 
 .skip {
   position: absolute; left: -999px; top: 0.5rem;
@@ -92,15 +94,15 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 }
 .brand { text-decoration: none; color: var(--ink); line-height: 1.2; padding: 0.75rem 0; }
 .brand strong { display: block; font-family: var(--serif); font-weight: 500; font-size: 1.25rem; }
-.brand span { font-size: var(--step--1); color: var(--muted); }
+.brand strong + span { font-size: var(--step--1); color: var(--muted); }
 
 .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.25rem 1.5rem; flex-wrap: wrap; }
 .nav a { color: var(--ink); text-decoration: none; font-size: 0.975rem; padding: 0.4rem 0; display: inline-block; }
 .nav a:hover { text-decoration: underline; }
 .nav .call {
-  background: var(--moss); color: var(--surface); padding: 0.45rem 0.9rem; border-radius: 999px;
+  background: var(--clay); color: var(--surface); padding: 0.45rem 0.9rem; border-radius: 999px;
 }
-.nav .call:hover { background: var(--moss-deep); color: var(--surface); text-decoration: none; }
+.nav .call:hover { background: var(--clay-deep); color: var(--surface); text-decoration: none; }
 
 @media (max-width: 52rem) {
   .nav ul { gap: 0.25rem 1rem; }
@@ -119,38 +121,59 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   display: inline-block; font-family: var(--sans); font-weight: 600; text-decoration: none;
   background: var(--ink); color: var(--surface); padding: 0.85rem 1.4rem; border-radius: 999px;
 }
-.btn:hover { background: var(--moss-deep); color: var(--surface); }
+.btn:hover { background: var(--clay-deep); color: var(--surface); }
 .btn.quiet { background: transparent; color: var(--ink); padding: 0.85rem 0.25rem; text-decoration: underline; }
-.btn.quiet:hover { color: var(--moss-deep); }
+.btn.quiet:hover { color: var(--clay-deep); }
 
-/* Konturlinien – das eine bewegte Element der Seite */
-.contours {
-  position: absolute; right: -8rem; top: 50%; transform: translateY(-50%);
-  width: min(54rem, 95vw); height: auto; z-index: 0; pointer-events: none;
+/* Ensō – das eine bewegte Element der Seite */
+.enso {
+  position: absolute; right: clamp(-3rem, 2vw, 4rem); top: 52%; transform: translateY(-50%);
+  width: min(31rem, 46vw); height: auto; z-index: 0; pointer-events: none;
 }
-.contours path { fill: none; stroke: var(--moss); stroke-width: 1.1; opacity: 0.32; }
-.contours path:nth-child(3n) { stroke: var(--sand); opacity: 0.9; stroke-width: 1.6; }
+.enso .ink { fill: var(--ink); opacity: 0.86; }
+.enso .fiber { fill: none; stroke: var(--ink); stroke-width: 1.4; opacity: 0.45; stroke-linecap: round; }
+.enso .reveal { fill: none; stroke: #fff; stroke-width: 70; stroke-linecap: round; }
 @media (prefers-reduced-motion: no-preference) {
-  .contours path {
-    stroke-dasharray: 3200; stroke-dashoffset: 3200;
-    animation: draw 3.4s cubic-bezier(.4,.1,.2,1) forwards;
-  }
-  .contours path:nth-child(2) { animation-delay: .15s; }
-  .contours path:nth-child(3) { animation-delay: .3s; }
-  .contours path:nth-child(4) { animation-delay: .45s; }
-  .contours path:nth-child(5) { animation-delay: .6s; }
-  .contours path:nth-child(6) { animation-delay: .75s; }
-  .contours path:nth-child(7) { animation-delay: .9s; }
-  .contours path:nth-child(8) { animation-delay: 1.05s; }
+  .enso .reveal { stroke-dasharray: 1500; stroke-dashoffset: 1500; animation: brush 2.2s cubic-bezier(.55,.1,.35,1) .3s forwards; }
+  .enso .fiber { opacity: 0; animation: fade .6s ease-out 2.3s forwards; }
 }
-@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes brush { to { stroke-dashoffset: 0; } }
+@keyframes fade { to { opacity: 0.45; } }
 @media (max-width: 52rem) {
-  .contours { right: -14rem; top: auto; bottom: -6rem; transform: none; opacity: 0.6; }
+  .enso { right: -7rem; top: auto; bottom: -5rem; transform: none; width: 22rem; opacity: 0.16; }
 }
+
+/* Siegel im Logo */
+.brand { display: flex; align-items: center; gap: 0.75rem; }
+.seal {
+  flex: none; width: 2.6rem; height: 2.6rem; border-radius: 0.3rem; background: var(--cinnabar);
+  color: #f5ebe0; display: grid; place-items: center; font-family: var(--serif); font-size: 1rem;
+  letter-spacing: 0.04em; transform: rotate(-3deg);
+}
+
+/* Symbole (selbst gezeichnet) */
+.icon { width: 2.75rem; height: 2.75rem; fill: none; stroke: var(--clay); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.icon.small { width: 1.75rem; height: 1.75rem; stroke-width: 1.7; }
+.icon-row { display: flex; align-items: center; gap: 0.6rem; }
+
+/* Tuschberge */
+.mountains { display: block; width: 100%; height: clamp(5rem, 12vw, 10rem); }
+.mountains path:nth-child(1) { fill: var(--sand); opacity: .55; }
+.mountains path:nth-child(2) { fill: var(--olive); opacity: .45; }
+.mountains path:nth-child(3) { fill: var(--ink); }
+
+/* Figur Übung */
+.practice { display: grid; grid-template-columns: 7rem 1fr; gap: 1.5rem; align-items: start; margin-top: 2.5rem; }
+.figure { width: 7rem; height: auto; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.figure .head { fill: var(--ink); }
+.figure .ground { stroke: var(--clay); stroke-width: 1.4; opacity: .7; }
+@media (max-width: 30rem) { .practice { grid-template-columns: 5rem 1fr; } .figure { width: 5rem; } }
 
 /* ---------- Abschnitte ---------- */
 section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
 section + section { border-top: 1px solid var(--line); }
+section.contact-block, .mountain-band + section { border-top: 0; }
+.mountain-band { padding: 0; background: var(--paper); line-height: 0; }
 .surface { background: var(--surface); }
 
 .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 2rem clamp(2rem, 6vw, 5rem); }
@@ -163,7 +186,8 @@ section + section { border-top: 1px solid var(--line); }
 
 /* Behandlungen */
 .treatments { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 3rem; margin-top: 0.5rem; }
-.treatments article { border-top: 2px solid var(--moss); padding-top: 1rem; }
+.treatments article { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+.treatments .icon { margin-bottom: 0.75rem; }
 .treatments h3 { margin-bottom: 0.5rem; }
 .treatments p { color: var(--muted); margin: 0; }
 @media (max-width: 40rem) { .treatments { grid-template-columns: 1fr; } }
@@ -173,7 +197,7 @@ section + section { border-top: 1px solid var(--line); }
 .steps li { counter-increment: step; display: grid; grid-template-columns: 3rem 1fr; gap: 0 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
 .steps li:first-child { border-top: 1px solid var(--line); }
 .steps li::before {
-  content: counter(step); font-family: var(--serif); font-size: var(--step-2); line-height: 1; color: var(--moss);
+  content: counter(step); font-family: var(--serif); font-size: var(--step-2); line-height: 1; color: var(--clay);
 }
 .steps h3 { margin-bottom: 0.35rem; }
 .steps p { margin: 0; color: var(--muted); }
@@ -181,7 +205,7 @@ section + section { border-top: 1px solid var(--line); }
 /* Therapeut */
 .timeline { margin: 1.5rem 0 0; padding: 0; }
 .timeline div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--line); }
-.timeline dt { font-family: var(--serif); color: var(--moss-deep); }
+.timeline dt { font-family: var(--serif); color: var(--clay-deep); }
 .timeline dd { margin: 0; }
 @media (max-width: 30rem) { .timeline div { grid-template-columns: 1fr; gap: 0.1rem; } }
 
@@ -211,7 +235,7 @@ section + section { border-top: 1px solid var(--line); }
 
 /* Offene Punkte für die Vorschau – vor Livegang entfernen */
 .open-point {
-  border: 1.5px dashed #a0743a; background: #f6eedd; color: #5b3f17;
+  border: 1.5px dashed #4a6d8c; background: #e7edf1; color: #243a4e;
   padding: 0.9rem 1.1rem; border-radius: 0.25rem; max-width: var(--measure); margin: 1rem 0;
   font-size: 0.95rem;
 }
@@ -229,6 +253,7 @@ section + section { border-top: 1px solid var(--line); }
 .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 2rem; margin: 2rem 0; }
 .facts div { border-top: 1px solid var(--line); padding-top: 0.75rem; }
 .facts h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+.facts .icon { margin-bottom: 0.4rem; }
 .facts p { margin: 0; color: var(--muted); }
 @media (max-width: 40rem) { .facts { grid-template-columns: 1fr; } }
 
@@ -238,7 +263,10 @@ address { font-style: normal; font-family: var(--serif); font-size: var(--step-1
   background: var(--ink); color: var(--surface);
 }
 .contact-block a { color: var(--surface); }
-.contact-block .muted { color: #b9c4bc; }
+.contact-block .muted { color: #cbbba6; }
+.contact-block { padding-top: 0; }
+.contact-block .wrap { padding-top: clamp(2.5rem, 6vw, 4rem); }
+.contact-lines .icon { stroke: var(--sand); }
 .contact-block h2 { max-width: 16ch; }
 .contact-lines { margin: 2rem 0 0; display: grid; gap: 0.5rem; }
 .contact-lines a { font-family: var(--serif); font-size: var(--step-2); text-decoration: none; overflow-wrap: anywhere; }
