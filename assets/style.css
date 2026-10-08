@@ -166,6 +166,34 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   .enso { right: -7rem; top: auto; bottom: -5rem; transform: none; width: 22rem; opacity: 0.16; }
 }
 
+/* Blütenzweig (Asiatischer Blüten-Hartriegel) – wird nach dem Ensō gemalt */
+.blossoms {
+  position: absolute; top: 0; right: 0; width: min(38rem, 50vw); height: auto;
+  z-index: 0; pointer-events: none; overflow: visible;
+}
+.blossoms .branch { fill: var(--ink); opacity: 0.88; }
+.blossoms .reveal { fill: none; stroke: #fff; stroke-width: 36; stroke-linecap: round; }
+.blossoms .leaf { fill: var(--olive); opacity: 0.8; }
+.blossoms .bract { fill: url(#bract-wash); stroke: var(--ink); stroke-width: 1; stroke-opacity: 0.5; }
+.blossoms .vein { fill: none; stroke: var(--clay); stroke-width: 0.8; opacity: 0.35; }
+.blossoms .core { fill: #87843f; }
+.blossoms .leaf, .blossoms .bract { transform-box: fill-box; transform-origin: 50% 100%; }
+.blossoms .core { transform-box: fill-box; transform-origin: 50% 50%; }
+@media (prefers-reduced-motion: no-preference) {
+  .blossoms .reveal { stroke-dasharray: 900; stroke-dashoffset: 900; animation: brush 2s cubic-bezier(.5,.1,.35,1) forwards; }
+  .blossoms .leaf { opacity: 0; transform: scale(.2); animation: unfold .9s ease-out forwards; }
+  .blossoms .bract { opacity: 0; transform: scale(.15) rotate(-6deg); animation: open 1.1s cubic-bezier(.3,.6,.3,1) forwards; }
+  .blossoms .vein { opacity: 0; animation: vein .6s ease-out forwards; }
+  .blossoms .core { opacity: 0; transform: scale(.3); animation: unfold-core .6s ease-out forwards; }
+}
+@keyframes unfold { to { opacity: 0.8; transform: scale(1); } }
+@keyframes open { 60% { opacity: 1; } to { opacity: 1; transform: none; } }
+@keyframes vein { to { opacity: 0.35; } }
+@keyframes unfold-core { to { opacity: 1; transform: scale(1); } }
+@media (max-width: 52rem) {
+  .blossoms { width: 14rem; right: -2.5rem; top: -1.5rem; opacity: 0.5; }
+}
+
 /* Symbole (selbst gezeichnet) */
 .icon { width: 2.75rem; height: 2.75rem; fill: none; stroke: var(--clay); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .icon.small { width: 1.75rem; height: 1.75rem; stroke-width: 1.7; }
