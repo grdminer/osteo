@@ -359,3 +359,24 @@ address { font-style: normal; font-family: var(--serif); font-size: var(--step-1
 .topic-nav a[aria-current="page"] { background: var(--ink); border-color: var(--ink); color: var(--surface); }
 .treatments .more { margin-top: 0.6rem; }
 .treatments .more a { font-size: 0.95rem; }
+
+/* ---------- Neuigkeiten ---------- */
+.news-banner { background: var(--ink); color: var(--surface); }
+.news-banner .wrap { display: flex; align-items: center; gap: 0.6rem 1.1rem; flex-wrap: wrap; padding-top: 0.85rem; padding-bottom: 0.85rem; }
+.news-banner p { margin: 0; max-width: none; flex: 1 1 13rem; }
+.news-banner a { color: var(--surface); font-weight: 600; text-underline-offset: 0.2em; white-space: nowrap; }
+.news-banner a:hover { color: var(--sand); }
+.news-banner :focus-visible { outline-color: var(--sand); }
+.tag { display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: .02em; padding: 0.15rem 0.6rem; border-radius: 999px; background: var(--cinnabar); color: #f5ebe0; }
+.news-list .news { max-width: 46rem; }
+.news + .news { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--line); }
+.news-meta { display: flex; align-items: center; gap: 0.8rem; color: var(--muted); font-size: var(--step--1); margin-bottom: 0.8rem; }
+.news h2 { margin-bottom: 1.5rem; }
+.news h3 { margin: 2rem 0 0.5rem; }
+.price-box { display: flex; align-items: center; gap: 1.5rem; background: var(--paper); border-left: 3px solid var(--clay); padding: 1.25rem 1.5rem; border-radius: 0 0.4rem 0.4rem 0; margin-bottom: 2rem; }
+.price-box .amount { font-family: var(--serif); font-size: clamp(2.25rem, 6vw, 3rem); color: var(--clay); line-height: 1; white-space: nowrap; }
+.price-box p { margin: 0 0 0.3rem; }
+.price-box .muted { color: var(--muted); margin: 0; font-size: 0.95rem; }
+@media (max-width: 30rem) { .price-box { flex-direction: column; align-items: flex-start; gap: 0.6rem; } }
+.news .sig { font-family: var(--serif); font-size: var(--step-1); margin-top: 1.5rem; }
+.ph { background: #f6e3b8; border: 1px dashed #a77a2b; color: #5b3f12; padding: 0 0.35rem; border-radius: 0.2rem; font-weight: 600; }
