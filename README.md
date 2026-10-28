@@ -8,4 +8,4 @@ Die Website ist statisch (HTML und CSS, kein Build-Schritt). Die Patientendokume
 
 ## Mit Claude weiterarbeiten
 
-Repository herunterladen (auf GitHub „Code“ → „Download ZIP“, entpacken) oder mit `git clone https://github.com/grdminer/osteo` holen. Den Ordner im Claude-Desktop-Programm über „+“ → „Add folder“ freigeben. Claude liest `CLAUDE.md` und kennt damit den Stand des Projekts.
+Repository herunterladen (auf GitHub „Code“ → „Download ZIP“, entpacken) oder mit `git clone https://github.com/grdminer/osteo` holen. Den Ordner im Claude-Desktop-Programm über „+“ → „Add folder“ freigeben und Claude zu Beginn bitten, `CLAUDE.md` zu lesen. Darin steht der Stand des Projekts.
