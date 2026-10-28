@@ -1,0 +1,7 @@
+# Zwischendateien der PDF-Erzeugung
+dokumente/quellen/*.html
+dokumente/quellen/__pycache__/
+dokumente/pdf/*_raw.pdf
+dokumente/pdf/protokoll_*.pdf
+# Prüffassungen nicht öffentlich ablegen (Repository ist öffentlich); sie lassen sich jederzeit neu erzeugen
+dokumente/pdf/*Prüffassung*

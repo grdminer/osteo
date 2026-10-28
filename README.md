@@ -1,9 +1,11 @@
 # osteo
 
-Vorschau der neuen Website für die Praxis Gunnar Götze (Osteopathie & Physiotherapie, Dahlewitz).
+Neue Website und Patientendokumente für die Praxis Gunnar Götze (Osteopathie & Physiotherapie, Dahlewitz).
 
-Statische Seite ohne Build-Schritt: `index.html`, `impressum.html`, `datenschutz.html`, Styles und lokal eingebundene Schriften unter `assets/`.
+Vorschau: https://grdminer.github.io/osteo/
 
-Veröffentlichung über GitHub Pages: Settings → Pages → „Deploy from a branch“, Branch `main`, Ordner `/ (root)`.
+Die Website ist statisch (HTML und CSS, kein Build-Schritt). Die Patientendokumente werden aus `dokumente/quellen/` als PDF erzeugt. Aufbau, Gestaltung, Grundsätze, offene Punkte und die Schritte bis zum Livegang stehen in `CLAUDE.md`.
 
-Vor dem Livegang: alle gestrichelt markierten „Offen“-Kästen klären und entfernen, `noindex` in den Seiten und `robots.txt` entfernen, Datenschutzerklärung prüfen lassen.
+## Mit Claude weiterarbeiten
+
+Repository herunterladen (auf GitHub „Code“ → „Download ZIP“, entpacken) oder mit `git clone https://github.com/grdminer/osteo` holen. Den Ordner im Claude-Desktop-Programm über „+“ → „Add folder“ freigeben. Claude liest `CLAUDE.md` und kennt damit den Stand des Projekts.
